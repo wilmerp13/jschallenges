@@ -13,6 +13,21 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
+const switchPlayer = function () {
+currentScore = 0;
+document.getElementById(`current--${activePlayer}`).textContent = 0; 
+activePlayer = activePlayer === 0 ? 1 : 0;
+//player0.classList.toggle('player--active');
+//player1.classList.toggle('player--active');
+    if (player0.classList.contains('player--active') ) {
+        player0.classList.remove('player--active');
+        player1.classList.add('player--active');}
+     else {
+        player1.classList.remove('player--active');
+        player0.classList.add('player--active');
+    }
+}
+
 
 // Starting conditions
 
@@ -39,23 +54,22 @@ btnRoll.addEventListener('click',function(){
         document.getElementById(`current--${activePlayer}`).textContent = currentScore;
     } else {
         // Swith to next player
-    currentScore = 0;
-    document.getElementById(`current--${activePlayer}`).textContent = 0; 
-    activePlayer = activePlayer === 0 ? 1 : 0;
-   //player0.classList.toggle('player--active');
-   //player1.classList.toggle('player--active');
-        if (player0.classList.contains('player--active') ) {
-            player0.classList.remove('player--active');
-            player1.classList.add('player--active');}
-            
-
-            else {
-                player1.classList.remove('player--active');
-                player0.classList.add('player--active');
-            
-            }
-    
+         switchPlayer();
 
         }
         
 });
+// button hold functionality
+btnHold.addEventListener('click', function() {
+    // add current score to active player score[].
+    scores[activePlayer] += currentScore;
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+
+//check is score is over or equal to 100 and that will trigger player win.
+
+
+//switch player
+
+
+    switchPlayer();
+})
