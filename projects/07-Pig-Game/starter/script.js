@@ -39,23 +39,21 @@ btnRoll.addEventListener('click',function(){
         document.getElementById(`current--${activePlayer}`).textContent = currentScore;
     } else {
         // Swith to next player
-    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    currentScore = 0;
+    document.getElementById(`current--${activePlayer}`).textContent = 0; 
     activePlayer = activePlayer === 0 ? 1 : 0;
-   player0.classList.toggle('player--active');
-   player1.classList.toggle('player--active');
-       /* if (player0.classList.value.includes('player--active') ) {
+   //player0.classList.toggle('player--active');
+   //player1.classList.toggle('player--active');
+        if (player0.classList.contains('player--active') ) {
             player0.classList.remove('player--active');
-            player1.classList.add('player--active');
-            console.log(player1.classList.value);
+            player1.classList.add('player--active');}
             
 
-            if(player1.classList.value.includes('player--active')) {
-                console.log(player1.classList.value);
+            else {
                 player1.classList.remove('player--active');
                 player0.classList.add('player--active');
-                console.log(player0.classList.value);
+            
             }
-            */
     
 
         }
